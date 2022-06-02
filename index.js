@@ -15,7 +15,7 @@ const query_Array = [
 ];
 
 const initialQuery = () => {
-  inquirer
+  return inquirer
     .prompt([
       {
         name: "query_type",
@@ -26,8 +26,19 @@ const initialQuery = () => {
     ])
     .then((answer) => {
       if (answer.query_type === query_Array[0]) {
+        // db.query(`SELECT * FROM employee`, (err, rows) => {
+        //   if (err) {
+        //     console.log({ error: err.message });
+        //     return;
+        //   }
+        //   const table = cTable.getTable("Employees", rows);
+        //   console.log(table);
+        //   initialQuery();
+        // });
         getEmployee();
-        initialQuery();
+        setTimeout(() => {
+          initialQuery();
+        }, 1000);
       }
     });
 };
