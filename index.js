@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 const cTable = require("console.table");
 const db = require("./db/connection");
-const getEmployee = require("./lib/helper");
+const { getEmployee, addEmployee } = require("./lib/helper");
 
 // original question array
 const query_Array = [
@@ -25,43 +25,43 @@ const initialQuery = () => {
       },
     ])
     .then((answer) => {
-      if (answer.query_type === query_Array[0]) {
+      if (answer.query_type === "View All Employees") {
         getEmployee();
         setTimeout(() => {
           initialQuery();
         }, 1000);
       }
-      if (answer.query_type === query_Array[1]) {
+      if (answer.query_type === "Add Employee") {
         addEmployee();
-        setTimeout(() => {
-          initialQuery();
-        }, 1000);
+        // setTimeout(() => {
+        //   initialQuery();
+        // }, 1000);
       }
-      if (answer.query_type === query_Array[2]) {
+      if (answer.query_type === "Update Employee Role") {
         updateEmployee();
         setTimeout(() => {
           initialQuery();
         }, 1000);
       }
-      if (answer.query_type === query_Array[3]) {
+      if (answer.query_type === "View All Roles") {
         getAllRoles();
         setTimeout(() => {
           initialQuery();
         }, 1000);
       }
-      if (answer.query_type === query_Array[4]) {
+      if (answer.query_type === "Add Role") {
         addRole();
         setTimeout(() => {
           initialQuery();
         }, 1000);
       }
-      if (answer.query_type === query_Array[5]) {
+      if (answer.query_type === "View All Departments") {
         getDepartment();
         setTimeout(() => {
           initialQuery();
         }, 1000);
       }
-      if (answer.query_type === query_Array[6]) {
+      if (answer.query_type === "Add Department") {
         addDepartment();
         setTimeout(() => {
           initialQuery();
