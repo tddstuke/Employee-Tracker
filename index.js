@@ -26,16 +26,43 @@ const initialQuery = () => {
     ])
     .then((answer) => {
       if (answer.query_type === query_Array[0]) {
-        // db.query(`SELECT * FROM employee`, (err, rows) => {
-        //   if (err) {
-        //     console.log({ error: err.message });
-        //     return;
-        //   }
-        //   const table = cTable.getTable("Employees", rows);
-        //   console.log(table);
-        //   initialQuery();
-        // });
         getEmployee();
+        setTimeout(() => {
+          initialQuery();
+        }, 1000);
+      }
+      if (answer.query_type === query_Array[1]) {
+        addEmployee();
+        setTimeout(() => {
+          initialQuery();
+        }, 1000);
+      }
+      if (answer.query_type === query_Array[2]) {
+        updateEmployee();
+        setTimeout(() => {
+          initialQuery();
+        }, 1000);
+      }
+      if (answer.query_type === query_Array[3]) {
+        getAllRoles();
+        setTimeout(() => {
+          initialQuery();
+        }, 1000);
+      }
+      if (answer.query_type === query_Array[4]) {
+        addRole();
+        setTimeout(() => {
+          initialQuery();
+        }, 1000);
+      }
+      if (answer.query_type === query_Array[5]) {
+        getDepartment();
+        setTimeout(() => {
+          initialQuery();
+        }, 1000);
+      }
+      if (answer.query_type === query_Array[6]) {
+        addDepartment();
         setTimeout(() => {
           initialQuery();
         }, 1000);
