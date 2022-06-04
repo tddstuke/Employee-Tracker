@@ -1,7 +1,13 @@
 const inquirer = require("inquirer");
 const cTable = require("console.table");
 const db = require("./db/connection");
-const { getEmployee, addEmployee } = require("./lib/helper");
+const {
+  getEmployee,
+  addEmployee,
+  updateEmployee,
+  getAllRoles,
+  addRole,
+} = require("./lib/helper");
 
 // original question array
 const query_Array = [
@@ -33,15 +39,17 @@ const initialQuery = () => {
       }
       if (answer.query_type === "Add Employee") {
         addEmployee();
-        // setTimeout(() => {
-        //   initialQuery();
-        // }, 1000);
+        // if ((addEmployee = true)) {
+        //   setTimeout(() => {
+        //     initialQuery();
+        //   }, 1000);
+        // }
       }
       if (answer.query_type === "Update Employee Role") {
         updateEmployee();
-        setTimeout(() => {
-          initialQuery();
-        }, 1000);
+        // setTimeout(() => {
+        //   initialQuery();
+        // }, 1000);
       }
       if (answer.query_type === "View All Roles") {
         getAllRoles();
@@ -51,9 +59,9 @@ const initialQuery = () => {
       }
       if (answer.query_type === "Add Role") {
         addRole();
-        setTimeout(() => {
-          initialQuery();
-        }, 1000);
+        // setTimeout(() => {
+        //   initialQuery();
+        // }, 1000);
       }
       if (answer.query_type === "View All Departments") {
         getDepartment();
