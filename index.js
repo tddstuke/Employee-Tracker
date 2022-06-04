@@ -7,6 +7,8 @@ const {
   updateEmployee,
   getAllRoles,
   addRole,
+  getDepartment,
+  addDepartment,
 } = require("./lib/helper");
 
 // original question array
@@ -71,9 +73,9 @@ const initialQuery = () => {
       }
       if (answer.query_type === "Add Department") {
         addDepartment();
-        setTimeout(() => {
-          initialQuery();
-        }, 1000);
+        // setTimeout(() => {
+        //   initialQuery();
+        // }, 1000);
       }
     });
 };
