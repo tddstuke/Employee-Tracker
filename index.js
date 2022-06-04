@@ -13,7 +13,7 @@ const query_Array = [
   "View All Departments",
   "Add Department",
 ];
-
+// original query
 const initialQuery = () => {
   return inquirer
     .prompt([
