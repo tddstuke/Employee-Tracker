@@ -20,10 +20,11 @@ const query_Array = [
   "Add Role",
   "View All Departments",
   "Add Department",
+  "Quit",
 ];
 // original query
 const initialQuery = () => {
-  return inquirer
+  inquirer
     .prompt([
       {
         name: "query_type",
@@ -34,18 +35,18 @@ const initialQuery = () => {
     ])
     .then((answer) => {
       if (answer.query_type === "View All Employees") {
-        getEmployee();
-        setTimeout(() => {
-          initialQuery();
-        }, 1000);
+        getEmployee(initialQuery);
+
+        // setTimeout(() => {
+        //   initialQuery();
+        // }, 1000);
       }
       if (answer.query_type === "Add Employee") {
         addEmployee();
-        // if ((addEmployee = true)) {
+
         //   setTimeout(() => {
         //     initialQuery();
         //   }, 1000);
-        // }
       }
       if (answer.query_type === "Update Employee Role") {
         updateEmployee();
@@ -77,7 +78,12 @@ const initialQuery = () => {
         //   initialQuery();
         // }, 1000);
       }
+      if (answer.query_type === "Quit") {
+        process.exit();
+      }
     });
 };
 
 initialQuery();
+
+module.exports = { initialQuery };
