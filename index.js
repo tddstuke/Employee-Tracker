@@ -5,6 +5,7 @@ const {
   getEmployee,
   addEmployee,
   updateEmployee,
+  deleteEmployee,
   getAllRoles,
   addRole,
   getDepartment,
@@ -16,6 +17,7 @@ const query_Array = [
   "View All Employees",
   "Add Employee",
   "Update Employee Role",
+  "Delete An Employee",
   "View All Roles",
   "Add Role",
   "View All Departments",
@@ -43,6 +45,10 @@ const initialQuery = () => {
       if (answer.query_type === "Update Employee Role") {
         updateEmployee(initialQuery);
       }
+      if (answer.query_type === "Delete An Employee") {
+        deleteEmployee(initialQuery);
+      }
+
       if (answer.query_type === "View All Roles") {
         getAllRoles(initialQuery);
       }
