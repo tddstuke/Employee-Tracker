@@ -36,47 +36,24 @@ const initialQuery = () => {
     .then((answer) => {
       if (answer.query_type === "View All Employees") {
         getEmployee(initialQuery);
-
-        // setTimeout(() => {
-        //   initialQuery();
-        // }, 1000);
       }
       if (answer.query_type === "Add Employee") {
-        addEmployee();
-
-        //   setTimeout(() => {
-        //     initialQuery();
-        //   }, 1000);
+        addEmployee(initialQuery);
       }
       if (answer.query_type === "Update Employee Role") {
-        updateEmployee();
-        // setTimeout(() => {
-        //   initialQuery();
-        // }, 1000);
+        updateEmployee(initialQuery);
       }
       if (answer.query_type === "View All Roles") {
-        getAllRoles();
-        setTimeout(() => {
-          initialQuery();
-        }, 1000);
+        getAllRoles(initialQuery);
       }
       if (answer.query_type === "Add Role") {
-        addRole();
-        // setTimeout(() => {
-        //   initialQuery();
-        // }, 1000);
+        addRole(initialQuery);
       }
       if (answer.query_type === "View All Departments") {
-        getDepartment();
-        setTimeout(() => {
-          initialQuery();
-        }, 1000);
+        getDepartment(initialQuery);
       }
       if (answer.query_type === "Add Department") {
-        addDepartment();
-        // setTimeout(() => {
-        //   initialQuery();
-        // }, 1000);
+        addDepartment(initialQuery);
       }
       if (answer.query_type === "Quit") {
         process.exit();
@@ -85,5 +62,3 @@ const initialQuery = () => {
 };
 
 initialQuery();
-
-module.exports = { initialQuery };
