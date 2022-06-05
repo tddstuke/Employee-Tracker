@@ -35,7 +35,9 @@ const initialQuery = () => {
     ])
     .then((answer) => {
       if (answer.query_type === "View All Employees") {
-        getEmployee(initialQuery);
+        getEmployee().then(() => {
+          initialQuery();
+        });
 
         // setTimeout(() => {
         //   initialQuery();
