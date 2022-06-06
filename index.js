@@ -6,15 +6,9 @@ const {
   deleteRole,
   deleteDepartment,
 } = require("./lib/delete");
-const {
-  getEmployee,
-  addEmployee,
-  updateEmployee,
-  getAllRoles,
-  addRole,
-  getDepartment,
-  addDepartment,
-} = require("./lib/helper");
+const { addEmployee, addRole, addDepartment } = require("./lib/add");
+const updateEmployee = require("./lib/update");
+const { getEmployee, getAllRoles, getDepartment } = require("./lib/helper");
 
 // original question array
 const query_Array = [
@@ -46,10 +40,10 @@ const initialQuery = () => {
         getEmployee(initialQuery);
       }
       if (answer.query_type === "Add Employee") {
-        addEmployee(initialQuery);
+        addEmployee(getEmployee, initialQuery);
       }
       if (answer.query_type === "Update Employee Role") {
-        updateEmployee(initialQuery);
+        updateEmployee(getEmployee, initialQuery);
       }
       if (answer.query_type === "Delete An Employee") {
         deleteEmployee(getEmployee, initialQuery);
@@ -59,7 +53,7 @@ const initialQuery = () => {
         getAllRoles(initialQuery);
       }
       if (answer.query_type === "Add Role") {
-        addRole(initialQuery);
+        addRole(getAllRoles, initialQuery);
       }
       if (answer.query_type === "Delete a Role") {
         deleteRole(getAllRoles, initialQuery);
@@ -69,7 +63,7 @@ const initialQuery = () => {
         getDepartment(initialQuery);
       }
       if (answer.query_type === "Add Department") {
-        addDepartment(initialQuery);
+        addDepartment(getDepartment, initialQuery);
       }
       if (answer.query_type === "Delete a Department") {
         deleteDepartment(getDepartment, initialQuery);
