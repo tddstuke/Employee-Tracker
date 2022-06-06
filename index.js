@@ -2,10 +2,14 @@ const inquirer = require("inquirer");
 const cTable = require("console.table");
 const db = require("./db/connection");
 const {
+  deleteEmployee,
+  deleteRole,
+  deleteDepartment,
+} = require("./lib/delete");
+const {
   getEmployee,
   addEmployee,
   updateEmployee,
-  deleteEmployee,
   getAllRoles,
   addRole,
   getDepartment,
@@ -20,8 +24,10 @@ const query_Array = [
   "Delete An Employee",
   "View All Roles",
   "Add Role",
+  "Delete a Role",
   "View All Departments",
   "Add Department",
+  "Delete a Department",
   "Quit",
 ];
 // original query
@@ -46,7 +52,7 @@ const initialQuery = () => {
         updateEmployee(initialQuery);
       }
       if (answer.query_type === "Delete An Employee") {
-        deleteEmployee(initialQuery);
+        deleteEmployee(getEmployee, initialQuery);
       }
 
       if (answer.query_type === "View All Roles") {
@@ -55,11 +61,18 @@ const initialQuery = () => {
       if (answer.query_type === "Add Role") {
         addRole(initialQuery);
       }
+      if (answer.query_type === "Delete a Role") {
+        deleteRole(getAllRoles, initialQuery);
+      }
+
       if (answer.query_type === "View All Departments") {
         getDepartment(initialQuery);
       }
       if (answer.query_type === "Add Department") {
         addDepartment(initialQuery);
+      }
+      if (answer.query_type === "Delete a Department") {
+        deleteDepartment(getDepartment, initialQuery);
       }
       if (answer.query_type === "Quit") {
         process.exit();
