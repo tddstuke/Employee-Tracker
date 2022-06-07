@@ -7,7 +7,7 @@ const {
   deleteDepartment,
 } = require("./lib/delete");
 const { addEmployee, addRole, addDepartment } = require("./lib/add");
-const updateEmployee = require("./lib/update");
+const { updateEmployee, updateManager } = require("./lib/update");
 const { getEmployee, getAllRoles, getDepartment } = require("./lib/helper");
 
 // original question array
@@ -15,6 +15,7 @@ const query_Array = [
   "View All Employees",
   "Add Employee",
   "Update Employee Role",
+  "Update Employee Manager",
   "Delete An Employee",
   "View All Roles",
   "Add Role",
@@ -45,6 +46,10 @@ const initialQuery = () => {
       if (answer.query_type === "Update Employee Role") {
         updateEmployee(getEmployee, initialQuery);
       }
+      if (answer.query_type === "Update Employee Manager") {
+        updateManager(getEmployee, initialQuery);
+      }
+
       if (answer.query_type === "Delete An Employee") {
         deleteEmployee(getEmployee, initialQuery);
       }
