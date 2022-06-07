@@ -8,11 +8,19 @@ const {
 } = require("./lib/delete");
 const { addEmployee, addRole, addDepartment } = require("./lib/add");
 const { updateEmployee, updateManager } = require("./lib/update");
-const { getEmployee, getAllRoles, getDepartment } = require("./lib/helper");
+const {
+  getEmployee,
+  getAllRoles,
+  getDepartment,
+  getManagerEmployees,
+  getByDepartment,
+} = require("./lib/get");
 
 // original question array
 const query_Array = [
   "View All Employees",
+  "View Employees By Manager",
+  "View Employees by Department",
   "Add Employee",
   "Update Employee Role",
   "Update Employee Manager",
@@ -39,6 +47,12 @@ const initialQuery = () => {
     .then((answer) => {
       if (answer.query_type === "View All Employees") {
         getEmployee(initialQuery);
+      }
+      if (answer.query_type === "View Employees By Manager") {
+        getManagerEmployees(initialQuery);
+      }
+      if (answer.query_type === "View Employees by Department") {
+        getByDepartment(initialQuery);
       }
       if (answer.query_type === "Add Employee") {
         addEmployee(getEmployee, initialQuery);
